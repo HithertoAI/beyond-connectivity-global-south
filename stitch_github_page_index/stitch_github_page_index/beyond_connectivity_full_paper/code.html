@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Full Paper - Beyond Connectivity</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#474744",
+                        "surface-bright": "#fbf9f8",
+                        "surface-container": "#f0eded",
+                        "on-surface-variant": "#594140",
+                        "surface-container-low": "#f6f3f2",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#d2e4fb",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#a11c29",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-fixed-dim": "#b7c8de",
+                        "outline": "#8d706f",
+                        "on-background": "#1b1c1c",
+                        "tertiary-fixed-dim": "#c8c6c2",
+                        "on-tertiary-container": "#c9c6c3",
+                        "tertiary-fixed": "#e5e2de",
+                        "secondary-fixed": "#d2e4fb",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#556679",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#410007",
+                        "primary-fixed-dim": "#ffb3b1",
+                        "on-primary-fixed-variant": "#900b1f",
+                        "secondary": "#4f6073",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "on-surface": "#1b1c1c",
+                        "error": "#ba1a1a",
+                        "tertiary": "#3c3c39",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#0b1d2d",
+                        "surface-dim": "#dcd9d9",
+                        "on-primary-container": "#ffb3b1",
+                        "surface-tint": "#b22933",
+                        "primary": "#7e0016",
+                        "tertiary-container": "#545350",
+                        "primary-fixed": "#ffdad8",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface": "#fbf9f8",
+                        "outline-variant": "#e1bebd",
+                        "on-secondary-fixed-variant": "#38485a",
+                        "inverse-on-surface": "#f3f0f0",
+                        "background": "#fbf9f8",
+                        "surface-variant": "#e4e2e1",
+                        "inverse-primary": "#ffb3b1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "1.5rem",
+                        "sidebar-width": "280px",
+                        "gutter": "2rem",
+                        "container-max": "1280px",
+                        "stack-lg": "3rem",
+                        "stack-sm": "0.5rem",
+                        "section-padding": "4rem"
+                    },
+                    "fontFamily": {
+                        "h2": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "body-lg": ["Newsreader"],
+                        "h3": ["Manrope"],
+                        "h1": ["Manrope"],
+                        "body-md": ["Newsreader"],
+                        "caption": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "h2": ["28px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["20px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["20px", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600" }],
+                        "h1": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "caption": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fbf9f8; /* surface / Tertiary Paper White */
+            color: #1b1c1c; /* on-surface */
+        }
+        .technical-list {
+            list-style: none;
+        }
+        .technical-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .technical-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 8px;
+            height: 8px;
+            background-color: #4f6073; /* secondary */
+        }
+        .manuscript-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #eae8e7; /* surface-container-high */
+            margin-top: 1rem;
+        }
+        .callout-principle {
+            background-color: rgba(126, 0, 22, 0.05); /* primary with 5% alpha */
+            border: 1px solid #7e0016; /* primary */
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter py-4 bg-surface/95 backdrop-blur-md border-b border-outline-variant dark:border-outline">
+<div class="font-h2 text-h2 font-bold text-primary dark:text-inverse-primary tracking-tighter">Beyond Connectivity</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-secondary dark:text-secondary-fixed-dim font-medium hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors duration-200 font-label-md" href="#">Principles</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-medium hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors duration-200 font-label-md" href="#">Technical Addendum</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 border border-outline rounded-lg hover:bg-surface-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-primary" data-icon="person">person</span>
+<span class="font-label-md text-on-surface">Author Info</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-4rem)] w-sidebar-width hidden lg:flex flex-col py-stack-md bg-surface dark:bg-inverse-surface border-r border-outline-variant dark:border-outline">
+<div class="px-6 mb-8">
+<h3 class="font-h3 text-h3 font-bold text-on-surface dark:text-inverse-on-surface">Table of Contents</h3>
+<p class="text-on-surface-variant font-label-md text-xs uppercase tracking-widest mt-1 opacity-70">Technical Brief v1.0</p>
+</div>
+<nav class="flex flex-col overflow-y-auto">
+<a class="text-on-surface-variant dark:text-surface-variant pl-4 py-2 font-label-md hover:bg-surface-container-high transition-all flex items-center gap-3" href="#intro">
+<span class="material-symbols-outlined text-lg" data-icon="info">info</span>
+                Introduction
+            </a>
+<a class="text-on-surface-variant dark:text-surface-variant pl-4 py-2 font-label-md hover:bg-surface-container-high transition-all flex items-center gap-3" href="#principle-1">
+<span class="material-symbols-outlined text-lg" data-icon="account_balance_wallet">account_balance_wallet</span>
+                Principle 1: Ownership
+            </a>
+<a class="text-on-surface-variant dark:text-surface-variant pl-4 py-2 font-label-md hover:bg-surface-container-high transition-all flex items-center gap-3" href="#principle-2">
+<span class="material-symbols-outlined text-lg" data-icon="payments">payments</span>
+                Principle 2: Self-Funding
+            </a>
+<a class="text-on-surface-variant dark:text-surface-variant pl-4 py-2 font-label-md hover:bg-surface-container-high transition-all flex items-center gap-3" href="#principle-3">
+<span class="material-symbols-outlined text-lg" data-icon="account_tree">account_tree</span>
+                Principle 3: Architecture
+            </a>
+<a class="text-on-surface-variant dark:text-surface-variant pl-4 py-2 font-label-md hover:bg-surface-container-high transition-all flex items-center gap-3" href="#principle-4">
+<span class="material-symbols-outlined text-lg" data-icon="handshake">handshake</span>
+                Principle 4: Reciprocity
+            </a>
+<a class="text-on-surface-variant dark:text-surface-variant pl-4 py-2 font-label-md hover:bg-surface-container-high transition-all flex items-center gap-3" href="#addendum">
+<span class="material-symbols-outlined text-lg" data-icon="terminal">terminal</span>
+                Technical Addendum
+            </a>
+<a class="border-l-4 border-primary text-primary font-bold pl-4 py-2 bg-primary-fixed/10 font-label-md flex items-center gap-3 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="description" style="font-variation-settings: 'FILL' 1;">description</span>
+                Full Paper
+            </a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="ml-0 lg:ml-sidebar-width pt-24 pb-stack-lg px-gutter">
+<div class="manuscript-container">
+<!-- Cover Header -->
+<section class="mb-20 text-center lg:text-left">
+<p class="font-label-md text-primary tracking-widest uppercase mb-4">Technical Brief</p>
+<h1 class="font-h1 text-h1 text-on-surface mb-6 leading-tight">Beyond Connectivity</h1>
+<p class="font-body-lg text-body-lg italic text-on-surface-variant leading-relaxed mb-8 max-w-2xl">
+                    A Technical Brief on Community-Owned, Self-Funding Digital Infrastructure for School Modernization in the Rural Global South
+                </p>
+<div class="flex flex-col md:flex-row gap-8 items-center border-t border-outline-variant pt-8">
+<div>
+<p class="font-label-md text-xs uppercase opacity-60">Author</p>
+<p class="font-h3 text-h3">R. Verity Vabolis</p>
+</div>
+<div>
+<p class="font-label-md text-xs uppercase opacity-60">Published</p>
+<p class="font-h3 text-h3">May 2026</p>
+</div>
+<div>
+<p class="font-label-md text-xs uppercase opacity-60">Organization</p>
+<p class="font-h3 text-h3">hithertoai.org</p>
+</div>
+</div>
+</section>
+<!-- 1. Introduction -->
+<section class="mb-20" id="intro">
+<div class="flex items-baseline gap-4 mb-4">
+<span class="font-h2 text-h2 text-primary opacity-30">01</span>
+<h2 class="font-h2 text-h2 text-on-surface flex-grow pb-2 border-b border-surface-container-high uppercase tracking-wide">Introduction</h2>
+</div>
+<h3 class="font-h3 text-h3 mb-6 text-on-surface italic">Connectivity Is the Starting Point, Not the Finish Line</h3>
+<div class="space-y-6 text-on-surface-variant leading-relaxed">
+<p>The effort to connect every school to the internet is among the most ambitious infrastructure undertakings of the current era. Initiatives such as GIGA, a partnership between UNICEF and the International Telecommunication Union, have made measurable progress in mapping school locations, assessing connectivity gaps, and negotiating bulk connectivity agreements with telecommunications providers. This work is necessary. It deserves acknowledgement and support.</p>
+<p>Connectivity, however, is a starting point, not a finish line. A school that is connected to the internet but dependent on proprietary hardware, locked into a single vendor's ecosystem, or generating data that is harvested without consent or compensation has not been modernized. It has been plugged into an extractive system by different means.</p>
+<div class="py-4 px-6 border-l-4 border-secondary bg-surface-container-low my-8">
+<p class="font-h3 text-on-surface mb-2">Key Questions After Connection:</p>
+<ul class="technical-list">
+<li>Who owns the infrastructure that delivers digital learning?</li>
+<li>How is that infrastructure funded, and does the funding model create sovereignty or dependency?</li>
+<li>What architectural standards must be in place to ensure that no harm reaches the child?</li>
+</ul>
+</div>
+<p>The answers offered here are not theoretical. They draw on existing, deployed technologies, community-owned mesh networks, anonymized data licensing frameworks, stateless-by-design protocols, that have been built and tested in the regions where they would be applied. None require a single vendor. None require external debt. None require permission from any authority that would withhold it.</p>
+</div>
+</section>
+<!-- 2. Principle One -->
+<section class="mb-20" id="principle-1">
+<div class="callout-principle rounded-lg p-stack-md mb-stack-md">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<h2 class="font-h2 text-h2 text-on-surface m-0">Principle One</h2>
+</div>
+<h3 class="font-h3 text-primary mb-4">Community Ownership as a Minimum Standard</h3>
+<div class="font-body-lg text-on-surface leading-relaxed italic space-y-4">
+<p>Infrastructure built for schools should be owned by the communities those schools serve. This is not a concession to be negotiated. It is the minimum condition for any intervention that purports to serve the interests of children.</p>
+</div>
+</div>
+<div class="space-y-6 text-on-surface-variant leading-relaxed">
+<h4 class="font-h3 text-on-surface mt-8 mb-4">What Community Ownership Means</h4>
+<p>Community ownership is distinct from community consultation, community benefit, or community participation. Consultation asks for input. Benefit promises outcomes. Participation invites involvement. Ownership confers control. A community that owns its school's digital infrastructure can determine how it is used, who may access it, under what terms data may be shared, and whether a vendor's contract is renewed.</p>
+<h4 class="font-h3 text-on-surface mt-8 mb-4">The Nexus Mesh Model</h4>
+<p>Community ownership of connectivity infrastructure is technically achievable with existing, off-the-shelf hardware. One demonstrated model is the nexus mesh, a peer-to-peer wireless network connecting multiple schools or community anchor points without dependence on any single telecommunications provider.</p>
+<p>A nexus mesh consists of solar-powered edge nodes located at schools or community centres. Each node creates a local network that caches educational content, runs local applications, and handles authentication without requiring constant internet connectivity. Synchronization with the broader internet occurs through whatever transport is available; a satellite link, a fibre connection at a central point, or, in the most resource-constrained settings, a portable storage device transported by motorcycle between nodes.</p>
+</div>
+</section>
+<!-- 3. Principle Two -->
+<section class="mb-20" id="principle-2">
+<div class="callout-principle rounded-lg p-stack-md mb-stack-md">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
+<h2 class="font-h2 text-h2 text-on-surface m-0">Principle Two</h2>
+</div>
+<h3 class="font-h3 text-primary mb-4">Self-Funding Through Sovereign Data Assets</h3>
+<div class="font-body-lg text-on-surface leading-relaxed italic space-y-4">
+<p>Recognizing an asset that already exists, that is generated daily by millions of children attending school, and that is currently given away without compensation. That asset is language data.</p>
+</div>
+</div>
+<div class="space-y-6 text-on-surface-variant leading-relaxed">
+<h4 class="font-h3 text-on-surface mt-8 mb-4">The Value of Language Data</h4>
+<p>Global artificial intelligence systems are trained predominantly on English-language data. The world's languages; numbering more than 7,000, the majority spoken in the Global South; are dramatically underrepresented in training corpora. This is not a curiosity. It is a market inefficiency of enormous scale.</p>
+<p>Technology companies, research institutions, and governments investing in AI development require diverse, high-quality language data to build systems that function beyond a narrow set of dominant languages. They require spoken language, written language, signed language. They require it across dialects, age groups, and contexts.</p>
+<div class="my-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-6 bg-surface-container rounded-lg border border-outline-variant">
+<h5 class="font-h3 text-primary mb-2">The Asset</h5>
+<p class="text-sm">Authentic, representative language data generated through the normal act of teaching and learning.</p>
+</div>
+<div class="p-6 bg-surface-container rounded-lg border border-outline-variant">
+<h5 class="font-h3 text-primary mb-2">The Market</h5>
+<p class="text-sm">AI developers needing diverse corpora to train global LLMs and speech recognition models.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Principle Three -->
+<section class="mb-20" id="principle-3">
+<div class="callout-principle rounded-lg p-stack-md mb-stack-md">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="account_tree" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<h2 class="font-h2 text-h2 text-on-surface m-0">Principle Three</h2>
+</div>
+<h3 class="font-h3 text-primary mb-4">Architectural Enforcement in Education</h3>
+<div class="font-body-lg text-on-surface leading-relaxed italic space-y-4">
+<p>Shifting from "governance by vibes" to architectural enforcement; the embedding of safety, privacy, and sovereignty directly into the technical fabric of infrastructure.</p>
+</div>
+</div>
+<div class="space-y-8 text-on-surface-variant leading-relaxed">
+<div>
+<h4 class="font-h3 text-on-surface mb-2">Standard One: Stateless by Design</h4>
+<p>Any digital tool used in a school must process student data locally, with zero persistence of personally identifiable information in any cloud environment.</p>
+</div>
+<div>
+<h4 class="font-h3 text-on-surface mb-2">Standard Two: No Biometrics on Minors</h4>
+<p>No facial recognition, fingerprints, iris scans, or voice prints shall be collected from any person under the age of 18 in an educational setting.</p>
+</div>
+<div>
+<h4 class="font-h3 text-on-surface mb-2">Standard Three: Hardware and Software Agnosticism</h4>
+<p>Digital tools must function with any school computer and any compatible peripheral device, not only the hardware sold by the vendor.</p>
+</div>
+</div>
+</section>
+<!-- 5. Principle Four -->
+<section class="mb-20" id="principle-4">
+<div class="callout-principle rounded-lg p-stack-md mb-stack-md">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="handshake" style="font-variation-settings: 'FILL' 1;">handshake</span>
+<h2 class="font-h2 text-h2 text-on-surface m-0">Principle Four</h2>
+</div>
+<h3 class="font-h3 text-primary mb-4">Reciprocity Mechanisms for Mutual Support</h3>
+<div class="font-body-lg text-on-surface leading-relaxed italic space-y-4">
+<p>Communities federate their infrastructure for mutual support under agreed protocols. Horizontal exchanges between equal parties, eliminating extraction layers.</p>
+</div>
+</div>
+<div class="space-y-6 text-on-surface-variant leading-relaxed">
+<p>The connectivity, compute power, and technical expertise available to one community will differ from that available to its neighbour. Mechanisms that allow communities to share what they have; voluntarily, transparently, and without creating new dependencies, extend the benefits of the model to those who would otherwise go without.</p>
+</div>
+</section>
+<!-- 6. Technical Addendum -->
+<section class="mb-20" id="addendum">
+<div class="flex items-baseline gap-4 mb-4">
+<span class="font-h2 text-h2 text-primary opacity-30">06</span>
+<h2 class="font-h2 text-h2 text-on-surface flex-grow pb-2 border-b border-surface-container-high uppercase tracking-wide">Technical Addendum</h2>
+</div>
+<div class="bg-surface-container-high rounded p-6 mb-8">
+<h4 class="font-h3 mb-4">Minimum Specifications Checklist</h4>
+<ul class="technical-list space-y-2 text-sm">
+<li><strong>Power Independence:</strong> Solar power with battery storage for 4+ hours beyond school use.</li>
+<li><strong>Asynchronous Operation:</strong> Full local functionality without persistent internet.</li>
+<li><strong>Open Standards:</strong> Use of IEEE 802.11 and non-proprietary protocols.</li>
+<li><strong>Auditable Firmware:</strong> Open-source or available for independent third-party audit.</li>
+<li><strong>Modular Hardware:</strong> Components replaceable with off-the-shelf equivalents.</li>
+</ul>
+</div>
+<div class="space-y-6">
+<p class="text-on-surface-variant">The frameworks, specifications, and reference implementations described in this brief are placed in the public domain. They may be used, adapted, and deployed by any government, multilateral institution, or community organization without attribution, without payment, and without permission.</p>
+<button class="bg-primary text-on-primary font-label-md px-8 py-4 rounded-lg flex items-center gap-3 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                        Download Full Technical PDF
+                    </button>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg px-gutter flex flex-col md:flex-row justify-between items-center mt-stack-lg ml-sidebar-width w-[calc(100%-sidebar-width)] bg-surface-container dark:bg-surface-container-low border-t border-outline-variant dark:border-outline">
+<div class="font-label-md text-label-md font-black text-on-surface-variant mb-4 md:mb-0">BEYOND CONNECTIVITY</div>
+<div class="flex gap-6 mb-6 md:mb-0">
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md hover:text-primary transition-colors" href="#">References</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md hover:text-primary transition-colors" href="#">Organization</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</div>
+<p class="font-caption text-caption text-secondary dark:text-secondary-fixed-dim">© 2024 Beyond Connectivity. All rights reserved.</p>
+</footer>
+</body></html>
